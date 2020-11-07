@@ -2,10 +2,13 @@
   "name": "custom-voyager",
   "version": "0.1.0",
   "private": true,
+  "proxy": "https://developer.github.com/v4/explorer/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.5",
     "@testing-library/react": "^11.1.1",
     "@testing-library/user-event": "^12.2.0",
+    "graphql": "^15.4.0",
+    "graphql-voyager": "^1.0.0-rc.31",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-scripts": "4.0.0",

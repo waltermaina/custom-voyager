@@ -1,17 +1,17 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
+import { Voyager } from 'graphql-voyager';
+import fetch from 'isomorphic-fetch';
+
+function introspectionProvider(query) {
+  return fetch("https://developer.github.com/v4/explorer/", {
+    method: 'post',
+    headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' },
+    body: JSON.stringify({ query: query }),
+  }).then((response) => response.json());
+}
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+  <Voyager introspection={introspectionProvider} />,
+  document.getElementById('root'),
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
